@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1711747640148,
+      "tag": "0000_violet_peter_parker",
+      "breakpoints": true
+    }
+  ]
+}
