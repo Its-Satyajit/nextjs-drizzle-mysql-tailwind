@@ -13,4 +13,6 @@ export default {
         database: process.env.DB_NAME as string,
         port: Number(process.env.DB_PORT) as number,
     },
+    verbose: true,
+    strict: true,
 } as Config;
