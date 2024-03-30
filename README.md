@@ -74,23 +74,34 @@ You can use these scripts according to your development workflow.
 
 ### The project structure is organized as follows:
 
-`src/: Contains the source code of the application.`
+<!-- -   src/: Contains the source code of the application.
+-   -   -   : Next.js app directory.
+-   -   -   styles/: Global styles and Tailwind CSS configurations.
+-   -   -   api/: API routes for the application.
+-   -   db/: Database related files.
+-   -   -   schema: schema directory.
+-   -   actions/: server action directory.
+-   public/: Public assets directory. -->
 
-`src/app/: Next.js app directory.`
-
-`src/app/api/: API routes for the application.`
-
-`src/db/: Database related files.`
-
-`public/: Public assets directory.`
-
-`actions/: server action directory.`
-
-`db/: database directory.`
-
-`db/schema: schema directory.`
-
-`styles/: Global styles and Tailwind CSS configurations.`
+<ul>
+  <li>
+  src/
+    <ul>
+      <li>app/: Next.js app directory.</li>
+     <ul>
+          <li>styles/: Global styles and Tailwind CSS configurations.</li>
+          <li>api/: API routes for the application.</li>
+     </ul>
+      <li>db/: Database related files.
+        <ul>
+          <li>schema/: Schema directory.</li>
+        </ul>
+      </li>
+      <li>actions/: Server action directory.</li>
+    </ul>
+  </li>
+  <li>public/: Public assets directory.</li>
+</ul>
 
 Feel free to customize and organize the project structure based on your project's specific requirements.
 
