@@ -8,15 +8,15 @@ Follow these steps to get started with the template:
 
 ### Clone this repository:
 
-`bash
+```bash
 git clone https://github.com/Its-Satyajit/nextjs-drizzle-mysql-tailwind.git
-`
+```
 
 ### Navigate into the project directory:
 
-`bash
+```bash
 cd nextjs-drizzle-mysql-tailwind
-`
+```
 
 ### Install dependencies:
 
