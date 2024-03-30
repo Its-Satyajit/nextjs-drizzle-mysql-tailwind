@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Drizzle MySQL Tailwind Lucia Template
 
-## Getting Started
+Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template provides you with a solid foundation to start building web applications using Next.js, Drizzle ORM, MySQL, Tailwind CSS, and Lucia. Below, you'll find detailed instructions on installation, usage, project structure, dependencies, and license information.
 
-First, run the development server:
+## Installation
+
+Follow these steps to get started with the template:
+
+### Clone this repository:
+
+`git clone https://github.com/Its-Satyajit/nextjs-drizzle-mysql-tailwind.git`
+
+### Navigate into the project directory:
+
+`cd nextjs-drizzle-mysql-tailwind`
+
+### Install dependencies:
+
+If you're using npm:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+    npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+If you're using pnpm:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+    pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+If you're using yarn:
 
-## Learn More
+```bash
+    yarn install
+```
 
-To learn more about Next.js, take a look at the following resources:
+If you're using bun:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+    bun install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Usage
 
-## Deploy on Vercel
+This template includes several scripts to aid development:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+`dev-t: Start the development server with Next.js turbo mode enabled.`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+`dev: Start the development server.`
+
+`build: Build the Next.js application for production.`
+
+`start: Start the Next.js application in production mode.`
+
+`lint: Run ESLint for linting code.`
+
+`dk:gen: Generate Drizzle ORM files for MySQL.`
+
+`dk:push: Push changes to MySQL database using Drizzle ORM.`
+
+`dk:pull: Introspect MySQL database using Drizzle ORM.`
+
+`dk:stdio: Start Drizzle Kit Studio with verbose output.`
+
+`db:mig: Run database migrations.`
+
+You can use these scripts according to your development workflow.
+
+## Project Structure
+
+### The project structure is organized as follows:
+
+`src/: Contains the source code of the application.`
+
+`src/pages/: Next.js pages directory.`
+
+`src/api/: API routes for the application.`
+
+`src/db/: Database related files.`
+
+`public/: Public assets directory.`
+
+`styles/: Global styles and Tailwind CSS configurations.`
+
+`Feel free to customize and organize the project structure based on your project's specific requirements.`
+
+## Dependencies
+
+This template utilizes the following dependencies:
+
+`@lucia-auth/adapter-drizzle: Lucia authentication adapter for Drizzle ORM.`
+
+`bcrypt: Library for hashing passwords.`
+
+`drizzle-orm: Object-Relational Mapping (ORM) library for MySQL.`
+
+`lucia: Lightweight JavaScript framework for building web applications.`
+
+`mysql2: MySQL client for Node.js.`
+
+`next: React framework for server-rendered applications.`
+
+`oslo: Utility library for Node.js.`
+
+`react: JavaScript library for building user interfaces.`
+
+`react-dom: DOM-specific methods for React.`
+
+## Development Dependencies
+
+Additionally, the template includes the following development dependencies:
+
+`@types/bcrypt: TypeScript type definitions for bcrypt.`
+
+`@types/node: TypeScript type definitions for Node.js.`
+
+`@types/react: TypeScript type definitions for React.`
+
+`@types/react-dom: TypeScript type definitions for React DOM.`
+
+`autoprefixer: PostCSS plugin to parse CSS and add vendor prefixes.`
+
+`dotenv: Module to load environment variables from a .env file.`
+
+`drizzle-kit: CLI toolkit for Drizzle ORM.`
+
+`eslint: JavaScript and TypeScript linter.`
+
+`eslint-config-next: ESLint configuration for Next.js projects.`
+
+`postcss: Tool for transforming CSS with JavaScript plugins.`
+
+`tailwindcss: Utility-first CSS framework for building custom designs.`
+
+`typescript: Typed superset of JavaScript that compiles to plain JavaScript.`
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Its-Satyajit/nextjs-drizzle-mysql-tailwind/blob/main/LICENSE) file for details.
