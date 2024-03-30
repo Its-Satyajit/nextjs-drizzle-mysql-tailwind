@@ -1,7 +1,16 @@
-export default function Home() {
+import { validateRequest } from '@/auth/validateRequest';
+import LogoutButton from '@/components/LogoutButton';
+import { redirect } from 'next/navigation';
+
+export default async function Home() {
+    const { user } = await validateRequest();
+    if (!user) {
+        return redirect('/signin');
+    }
     return (
         <main>
-            <div className='text-red-500 bg-black'>hi</div>
+            <h1>Hi, {user.username}!</h1>
+            <LogoutButton />
         </main>
     );
 }
