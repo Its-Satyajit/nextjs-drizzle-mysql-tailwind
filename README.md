@@ -1,6 +1,7 @@
 # Next.js Drizzle MySQL Tailwind Lucia Template
 
-Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template provides you with a solid foundation to start building web applications using Next.js, Drizzle ORM, MySQL, Tailwind CSS, and Lucia. Below, you'll find detailed instructions on installation, usage, project structure, dependencies, and license information.
+Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template!
+This template provides you with a solid foundation to start building web applications using Next.js, Drizzle ORM, MySQL, Tailwind CSS, and Lucia. Below, you'll find detailed instructions on installation, usage, project structure, dependencies, and license information.
 
 ## Installation
 
@@ -14,9 +15,9 @@ git clone https://github.com/Its-Satyajit/nextjs-drizzle-mysql-tailwind.git
 
 ### Navigate into the project directory:
 
-```bash
+`bash
 cd nextjs-drizzle-mysql-tailwind
-```
+`
 
 ### Install dependencies:
 
@@ -76,17 +77,23 @@ You can use these scripts according to your development workflow.
 
 `src/: Contains the source code of the application.`
 
-`src/pages/: Next.js pages directory.`
+`src/app/: Next.js app directory.`
 
-`src/api/: API routes for the application.`
+`src/app/api/: API routes for the application.`
 
 `src/db/: Database related files.`
 
 `public/: Public assets directory.`
 
+`actions/: server action directory.`
+
+`db/: database directory.`
+
+`db/schema: schema directory.`
+
 `styles/: Global styles and Tailwind CSS configurations.`
 
-`Feel free to customize and organize the project structure based on your project's specific requirements.`
+Feel free to customize and organize the project structure based on your project's specific requirements.
 
 ## Dependencies
 
