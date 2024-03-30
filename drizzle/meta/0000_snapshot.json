@@ -1,39 +1,39 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "8ffc782a-73d2-428b-8e55-e54a46dbe660",
+  "id": "aa2037b0-189e-4d42-a355-436ab0fca3bc",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "auth_otp": {
-      "name": "auth_otp",
+    "sessions": {
+      "name": "sessions",
       "columns": {
         "id": {
           "name": "id",
-          "type": "bigint",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": true
-        },
-        "phone": {
-          "name": "phone",
-          "type": "varchar(256)",
-          "primaryKey": false,
-          "notNull": false,
           "autoincrement": false
         },
         "user_id": {
           "name": "user_id",
-          "type": "bigint",
+          "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "expires_at": {
+          "name": "expires_at",
+          "type": "datetime",
+          "primaryKey": false,
+          "notNull": true,
           "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "auth_otp_user_id_users_id_fk": {
-          "name": "auth_otp_user_id_users_id_fk",
-          "tableFrom": "auth_otp",
+        "sessions_user_id_users_id_fk": {
+          "name": "sessions_user_id_users_id_fk",
+          "tableFrom": "sessions",
           "tableTo": "users",
           "columnsFrom": [
             "user_id"
@@ -46,8 +46,8 @@
         }
       },
       "compositePrimaryKeys": {
-        "auth_otp_id": {
-          "name": "auth_otp_id",
+        "sessions_id": {
+          "name": "sessions_id",
           "columns": [
             "id"
           ]
@@ -60,28 +60,27 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "bigint",
+          "type": "varchar(255)",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": true
+          "autoincrement": false
         },
-        "full_name": {
-          "name": "full_name",
-          "type": "varchar(256)",
+        "username": {
+          "name": "username",
+          "type": "varchar(255)",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hashed_password": {
+          "name": "hashed_password",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true,
           "autoincrement": false
         }
       },
-      "indexes": {
-        "name_idx": {
-          "name": "name_idx",
-          "columns": [
-            "full_name"
-          ],
-          "isUnique": false
-        }
-      },
+      "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
         "users_id": {
@@ -91,7 +90,14 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "users_username_unique": {
+          "name": "users_username_unique",
+          "columns": [
+            "username"
+          ]
+        }
+      }
     }
   },
   "schemas": {},
