@@ -1,7 +1,6 @@
 # Next.js Drizzle MySQL Tailwind Lucia Template
 
-Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template!
-This template provides you with a solid foundation to start building web applications using Next.js, Drizzle ORM, MySQL, Tailwind CSS, and Lucia. Below, you'll find detailed instructions on installation, usage, project structure, dependencies, and license information.
+Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template provides you with a solid foundation to start building web applications using Next.js, Drizzle ORM, MySQL, Tailwind CSS, and Lucia. Below, you'll find detailed instructions on installation, usage, project structure, dependencies, and license information.
 
 ## Installation
 
@@ -99,51 +98,32 @@ Feel free to customize and organize the project structure based on your project'
 
 This template utilizes the following dependencies:
 
-`@lucia-auth/adapter-drizzle: Lucia authentication adapter for Drizzle ORM.`
-
-`bcrypt: Library for hashing passwords.`
-
-`drizzle-orm: Object-Relational Mapping (ORM) library for MySQL.`
-
-`lucia: Lightweight JavaScript framework for building web applications.`
-
-`mysql2: MySQL client for Node.js.`
-
-`next: React framework for server-rendered applications.`
-
-`oslo: Utility library for Node.js.`
-
-`react: JavaScript library for building user interfaces.`
-
-`react-dom: DOM-specific methods for React.`
+-   @lucia-auth/adapter-drizzle: Lucia authentication adapter for Drizzle ORM.
+-   bcrypt: Library for hashing passwords.
+-   drizzle-orm: Object-Relational Mapping (ORM) library for MySQL.
+-   lucia: Lightweight JavaScript framework for building web applications.
+-   mysql2: MySQL client for Node.js.
+-   next: React framework for server-rendered applications.
+-   oslo: Utility library for Node.js.
+-   react: JavaScript library for building user interfaces.
+-   react-dom: DOM-specific methods for React.
 
 ## Development Dependencies
 
 Additionally, the template includes the following development dependencies:
 
-`@types/bcrypt: TypeScript type definitions for bcrypt.`
-
-`@types/node: TypeScript type definitions for Node.js.`
-
-`@types/react: TypeScript type definitions for React.`
-
-`@types/react-dom: TypeScript type definitions for React DOM.`
-
-`autoprefixer: PostCSS plugin to parse CSS and add vendor prefixes.`
-
-`dotenv: Module to load environment variables from a .env file.`
-
-`drizzle-kit: CLI toolkit for Drizzle ORM.`
-
-`eslint: JavaScript and TypeScript linter.`
-
-`eslint-config-next: ESLint configuration for Next.js projects.`
-
-`postcss: Tool for transforming CSS with JavaScript plugins.`
-
-`tailwindcss: Utility-first CSS framework for building custom designs.`
-
-`typescript: Typed superset of JavaScript that compiles to plain JavaScript.`
+-   @types/bcrypt: TypeScript type definitions for bcrypt.
+-   @types/node: TypeScript type definitions for Node.js.
+-   @types/react: TypeScript type definitions for React.
+-   @types/react-dom: TypeScript type definitions for React DOM.
+-   autoprefixer: PostCSS plugin to parse CSS and add vendor prefixes.
+-   dotenv: Module to load environment variables from a .env file.
+-   drizzle-kit: CLI toolkit for Drizzle ORM.
+-   eslint: JavaScript and TypeScript linter.
+-   eslint-config-next: ESLint configuration for Next.js projects.
+-   postcss: Tool for transforming CSS with JavaScript plugins.
+-   tailwindcss: Utility-first CSS framework for building custom designs.
+-   typescript: Typed superset of JavaScript that compiles to plain JavaScript.
 
 ## License
 
