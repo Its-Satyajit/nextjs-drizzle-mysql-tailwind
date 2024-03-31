@@ -38,7 +38,7 @@ If you're using yarn:
 yarn install
 ```
 
-If you're using bun:
+If you're using bun\*\*:
 
 ```bash
 bun install
@@ -58,12 +58,6 @@ npm dk:gen
 npm db:mig
 ```
 
-or
-
-```bash
-npm dk:push
-```
-
 If you're using pnpm:
 
 ```bash
@@ -72,12 +66,6 @@ pnpm dk:gen
 
 ```bash
 pnpm db:mig
-```
-
-or
-
-```bash
-pnpm dk:push
 ```
 
 If you're using yarn:
@@ -90,13 +78,7 @@ yarn dk:gen
 yarn db:mig
 ```
 
-or
-
-```bash
-yarn dk:push
-```
-
-If you're using bun:
+If you're using bun\*\*
 
 ```bash
 bun dk:gen
@@ -104,12 +86,6 @@ bun dk:gen
 
 ```bash
 bun db:mig
-```
-
-or
-
-```bash
-bun dk:push
 ```
 
 ### Start Development Server:
@@ -134,11 +110,14 @@ If you're using yarn:
 yarn dev
 ```
 
-If you're using bun:
+If you're using bun\*\*
 
 ```bash
 bun dev
 ```
+
+\*\*
+I don't have experience with Bun, so there may be differences in the Bash commands from what I mention here. I've heard it's an amazing technology, but I haven't had the opportunity to explore it yet.
 
 ## Usage
 
