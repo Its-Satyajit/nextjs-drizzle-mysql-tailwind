@@ -78,7 +78,7 @@ yarn dk:gen
 yarn db:mig
 ```
 
-If you're using bun\*\*
+If you're using bun\*\*:
 
 ```bash
 bun dk:gen
@@ -110,7 +110,7 @@ If you're using yarn:
 yarn dev
 ```
 
-If you're using bun\*\*
+If you're using bun\*\*:
 
 ```bash
 bun dev
