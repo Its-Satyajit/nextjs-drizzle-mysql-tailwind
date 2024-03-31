@@ -1,5 +1,4 @@
 import { validateRequest } from '@/auth/validateRequest';
-import LogoutButton from '@/components/LogoutButton';
 import { redirect } from 'next/navigation';
 
 export default async function Home() {
@@ -10,7 +9,6 @@ export default async function Home() {
     return (
         <main>
             <h1>Hi, {user.username}!</h1>
-            <LogoutButton />
         </main>
     );
 }
