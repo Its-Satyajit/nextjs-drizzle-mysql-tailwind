@@ -40,7 +40,7 @@ export async function signup(currentState: ActionResult, formData: FormData): Pr
     return redirect(`/`);
 }
 
-export async function login(currentState: ActionResult, formData: FormData): Promise<ActionResult> {
+export async function signin(currentState: ActionResult, formData: FormData): Promise<ActionResult> {
     const username = formData.get('username') as string;
     const password = formData.get('password') as string;
 

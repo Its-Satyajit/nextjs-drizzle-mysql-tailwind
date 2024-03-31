@@ -2,14 +2,14 @@
 import { useFormState } from 'react-dom';
 import Link from 'next/link';
 
-import { login } from '@/actions/Authentication';
+import { signin } from '@/actions/Authentication';
 import FormErrorMessage from './FormErrorMessage';
 
 export default function SigninForm() {
     const initialState = {
         message: '',
     };
-    const [fromState, fromAction] = useFormState(login, initialState);
+    const [fromState, fromAction] = useFormState(signin, initialState);
     return (
         <form className=' grid grid-flow-row space-y-5 text-xl' action={fromAction}>
             <h1 className='text-3xl font-semibold'>Sign In</h1>
