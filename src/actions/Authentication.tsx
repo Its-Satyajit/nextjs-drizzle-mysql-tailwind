@@ -11,24 +11,25 @@ import { getDb } from '@/db/db';
 import { users } from '@/db/schema/users';
 import { validateRequest } from '@/auth/validateRequest';
 
-type ActionResult = { error?: string };
+type ActionResult = { message?: string };
 
 const db = await getDb();
 const saltRounds = 10;
 
-export async function signup(formData: FormData): Promise<ActionResult> {
+export async function signup(currentState: ActionResult, formData: FormData): Promise<ActionResult> {
     const username = formData.get('username') as string;
     const password = formData.get('password') as string;
 
-    if (!username || !password) return { error: 'Username or Password Required' };
-    if (testUserName(username)) return { error: 'Invalid username' };
-    if (testPassword(password)) return { error: 'Invalid password' };
+    if (!username || !password) return { message: 'Username & Password Required' };
+    if (testUserName(username)) return { message: 'Invalid username' };
+    if (testPassword(password)) return { message: 'Invalid password' };
 
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
+    // const hashedPassword = await new Argon2id().hash(password);
     const existingUser = await checkExistingUser(username, db);
-    const userId = generateId(15);
+    if (existingUser && existingUser.length > 0) return { message: 'Username is already taken.' };
 
-    if (existingUser && existingUser.length > 0) return { error: 'Username is already taken.' };
+    const userId = generateId(15);
 
     await db?.insert(users).values({ id: userId, username: username, hashed_password: hashedPassword });
 
@@ -39,16 +40,15 @@ export async function signup(formData: FormData): Promise<ActionResult> {
     return redirect(`/`);
 }
 
-export async function login(formData: FormData): Promise<ActionResult> {
+export async function login(currentState: ActionResult, formData: FormData): Promise<ActionResult> {
     const username = formData.get('username') as string;
     const password = formData.get('password') as string;
 
-    if (!username || !password) return { error: 'Username or Password Required' };
-    if (testUserName(username)) return { error: 'Invalid username' };
-    if (testPassword(password)) return { error: 'Invalid password' };
+    if (!username || !password) return { message: 'Username & Password Required' };
+    if (testUserName(username)) return { message: 'Invalid username' };
+    if (testPassword(password)) return { message: 'Invalid password' };
 
     const existingUser = await checkExistingUser(username, db);
-    console.log('🚀 ~ login ~ existingUser:', existingUser);
 
     // NOTE:
     // Returning immediately allows malicious actors to figure out valid usernames from response times,
@@ -59,11 +59,13 @@ export async function login(formData: FormData): Promise<ActionResult> {
     // Since protecting against this is non-trivial,
     // it is crucial your implementation is protected against brute-force attacks with login throttling etc.
     // If usernames are public, you may outright tell the user that the username is invalid.
-    if (!existingUser || existingUser.length > 0) return { error: 'Incorrect username or password' };
+    if (!existingUser || existingUser.length === 0) return { message: 'Incorrect username or password' };
 
     const validPassword = bcrypt.compareSync(password, existingUser[0].hashed_password);
 
-    if (!validPassword) return { error: 'Incorrect username or password' };
+    // const validPassword = await new Argon2id().verify(existingUser[0].hashed_password, password);
+
+    if (!validPassword) return { message: 'Incorrect username or password' };
 
     const session = await lucia.createSession(existingUser[0].id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
@@ -74,7 +76,7 @@ export async function login(formData: FormData): Promise<ActionResult> {
 
 export async function logout(): Promise<ActionResult> {
     const { session } = await validateRequest();
-    if (!session) return { error: 'Unauthorized' };
+    if (!session) return { message: 'Unauthorized' };
 
     await lucia.invalidateSession(session.id);
 
@@ -100,6 +102,7 @@ function testUserName(username: FormDataEntryValue) {
         typeof username !== 'string' || username.length < 3 || username.length > 31 || !/^[a-z0-9_-]+$/.test(username)
     );
 }
+
 function testPassword(password: FormDataEntryValue) {
     return typeof password !== 'string' || password.length < 6 || password.length > 255;
 }

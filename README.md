@@ -48,7 +48,7 @@ bun install
 
 This template includes several scripts to aid development:
 
-`dev-t: Start the development server with Next.js turbo mode enabled.`
+`dev-t: Start the development server with Next.js Turbopack bundler .`
 
 `dev: Start the development server.`
 
@@ -112,7 +112,7 @@ This template utilizes the following dependencies:
 -   @lucia-auth/adapter-drizzle: Lucia authentication adapter for Drizzle ORM.
 -   bcrypt: Library for hashing passwords.
 -   drizzle-orm: Object-Relational Mapping (ORM) library for MySQL.
--   lucia: Lightweight JavaScript framework for building web applications.
+-   lucia: Lightweight JavaScript auth library.
 -   mysql2: MySQL client for Node.js.
 -   next: React framework for server-rendered applications.
 -   oslo: Utility library for Node.js.
@@ -135,6 +135,9 @@ Additionally, the template includes the following development dependencies:
 -   postcss: Tool for transforming CSS with JavaScript plugins.
 -   tailwindcss: Utility-first CSS framework for building custom designs.
 -   typescript: Typed superset of JavaScript that compiles to plain JavaScript.
+-   eslint-plugin-drizzle: ES Lint Plugin for drizzle
+-   @typescript-eslint/eslint-plugin: Typescript ES Lint plugin
+-   @typescript-eslint/parser: ES Lint Parser plugin
 
 ## License
 
