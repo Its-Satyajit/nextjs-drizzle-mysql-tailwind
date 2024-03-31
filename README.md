@@ -44,6 +44,102 @@ If you're using bun:
 bun install
 ```
 
+### Migrate Database:
+
+add database credential in `.env` file and then
+
+If you're using npm:
+
+```bash
+npm dk:gen
+```
+
+```bash
+npm db:mig
+```
+
+or
+
+```bash
+npm dk:push
+```
+
+If you're using pnpm:
+
+```bash
+pnpm dk:gen
+```
+
+```bash
+pnpm db:mig
+```
+
+or
+
+```bash
+pnpm dk:push
+```
+
+If you're using yarn:
+
+```bash
+yarn dk:gen
+```
+
+```bash
+yarn db:mig
+```
+
+or
+
+```bash
+yarn dk:push
+```
+
+If you're using bun:
+
+```bash
+bun dk:gen
+```
+
+```bash
+bun db:mig
+```
+
+or
+
+```bash
+bun dk:push
+```
+
+### Start Development Server:
+
+_*Note:*_ _`dev-t` (Nextjs Turbopack) not working at the time, it crashes while compiling any page. Webpack working fine._
+
+If you're using npm:
+
+```bash
+npm dev
+```
+
+If you're using pnpm:
+
+```bash
+pnpm dev
+```
+
+If you're using yarn:
+
+```bash
+yarn dev
+```
+
+If you're using bun:
+
+```bash
+bun dev
+```
+
 ## Usage
 
 This template includes several scripts to aid development:
