@@ -7,9 +7,9 @@ import { DrizzleMySQLAdapter } from '@lucia-auth/adapter-drizzle';
 import { sessions } from '@/db/schema/sessions';
 import { users } from '@/db/schema/users';
 
-const connection = await mysql.createConnection(dbConfig);
-const db = drizzle(connection);
+const pool = mysql.createPool(dbConfig);
+const luciaDb = drizzle(pool);
 
-export const drizzleMySQLAdapter = new DrizzleMySQLAdapter(db, sessions, users);
+export const drizzleMySQLAdapter = new DrizzleMySQLAdapter(luciaDb, sessions, users);
 
 export default drizzleMySQLAdapter;

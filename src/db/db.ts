@@ -9,25 +9,16 @@ export const dbConfig = {
     port: Number(process.env.DB_PORT) as number,
 };
 
-export const connection: { con: mysql.Connection | null } = { con: null };
-
-export const createConnection = async (): Promise<void> => {
-    try {
-        connection.con = await mysql.createConnection(dbConfig);
-        console.log('Database connection established.');
-    } catch (error) {
-        console.error('Error while creating database connection:', error);
-        throw error; // Rethrow the error to handle it in the caller
-    }
-};
+const pool = mysql.createPool({
+    ...dbConfig,
+    connectionLimit: 10,
+});
 
 export const getDb = async (): Promise<MySql2Database<Record<string, never>> | null> => {
     try {
-        if (!connection.con) {
-            console.warn('WARNING: Connection has not been established yet.');
-            await createConnection();
-        }
-        return drizzle(connection.con!);
+        const connection = await pool.getConnection();
+        const db = drizzle(connection);
+        return db;
     } catch (error) {
         console.error('Error while getting database:', error);
         return null;
@@ -36,9 +27,9 @@ export const getDb = async (): Promise<MySql2Database<Record<string, never>> | n
 
 export const closeDb = async (): Promise<void> => {
     try {
-        await connection.con?.end();
-        console.log('Database connection closed.');
+        pool.end();
+        console.log('Database connection pool closed.');
     } catch (error) {
-        console.error('Error while closing database connection:', error);
+        console.error('Error while closing database connection pool:', error);
     }
 };

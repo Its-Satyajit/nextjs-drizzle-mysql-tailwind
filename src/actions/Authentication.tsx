@@ -1,63 +1,36 @@
 'use server';
 import { redirect } from 'next/navigation';
 import { cookies } from 'next/headers';
-import { sql } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { generateId } from 'lucia';
+import type { MySql2Database } from 'drizzle-orm/mysql2';
+import bcrypt from 'bcrypt';
 
 import { lucia } from '@/auth/auth';
 import { getDb } from '@/db/db';
 import { users } from '@/db/schema/users';
-import bcrypt from 'bcrypt';
 import { validateRequest } from '@/auth/validateRequest';
 
-type ActionResult = {
-    error?: string;
-};
+type ActionResult = { error?: string };
 
 const db = await getDb();
 const saltRounds = 10;
 
 export async function signup(formData: FormData): Promise<ActionResult> {
-    const username = formData.get('username');
-    console.log('🚀 ~ signup ~ username:', username);
+    const username = formData.get('username') as string;
+    const password = formData.get('password') as string;
 
-    if (
-        typeof username !== 'string' ||
-        username.length < 4 ||
-        username.length > 31 ||
-        !/^[a-z0-9_-]+$/.test(username)
-    ) {
-        return {
-            error: 'Invalid username',
-        };
-    }
-
-    const password = formData.get('password');
-    if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
-        return {
-            error: 'Invalid password',
-        };
-    }
+    if (!username || !password) return { error: 'Username or Password Required' };
+    if (testUserName(username)) return { error: 'Invalid username' };
+    if (testPassword(password)) return { error: 'Invalid password' };
 
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
+    const existingUser = await checkExistingUser(username, db);
     const userId = generateId(15);
 
-    const existingUser = await db
-        ?.select()
-        .from(users)
-        .where(sql`lower(${users.username}) = lower(${username})`);
+    if (existingUser && existingUser.length > 0) return { error: 'Username is already taken.' };
 
-    if (existingUser && existingUser.length > 0) {
-        return {
-            error: 'Username is already taken.',
-        };
-    }
-
-    await db?.insert(users).values({
-        id: userId,
-        username: username,
-        hashed_password: hashedPassword,
-    });
+    await db?.insert(users).values({ id: userId, username: username, hashed_password: hashedPassword });
 
     const session = await lucia.createSession(userId, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
@@ -67,71 +40,66 @@ export async function signup(formData: FormData): Promise<ActionResult> {
 }
 
 export async function login(formData: FormData): Promise<ActionResult> {
-    ('use server');
-    const username = formData.get('username');
-    if (
-        typeof username !== 'string' ||
-        username.length < 3 ||
-        username.length > 31 ||
-        !/^[a-z0-9_-]+$/.test(username)
-    ) {
-        return {
-            error: 'Invalid username',
-        };
-    }
-    const password = formData.get('password');
-    if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
-        return {
-            error: 'Invalid password',
-        };
-    }
+    const username = formData.get('username') as string;
+    const password = formData.get('password') as string;
 
-    const existingUser = await db
-        ?.select()
-        .from(users)
-        .where(sql`lower(${users.username}) = lower(${username})`);
+    if (!username || !password) return { error: 'Username or Password Required' };
+    if (testUserName(username)) return { error: 'Invalid username' };
+    if (testPassword(password)) return { error: 'Invalid password' };
+
+    const existingUser = await checkExistingUser(username, db);
     console.log('🚀 ~ login ~ existingUser:', existingUser);
 
-    if (!existingUser) {
-        // NOTE:
-        // Returning immediately allows malicious actors to figure out valid usernames from response times,
-        // allowing them to only focus on guessing passwords in brute-force attacks.
-        // As a preventive measure, you may want to hash passwords even for invalid usernames.
-        // However, valid usernames can be already be revealed with the signup page among other methods.
-        // It will also be much more resource intensive.
-        // Since protecting against this is non-trivial,
-        // it is crucial your implementation is protected against brute-force attacks with login throttling etc.
-        // If usernames are public, you may outright tell the user that the username is invalid.
-        return {
-            error: 'Incorrect username or password',
-        };
-    }
+    // NOTE:
+    // Returning immediately allows malicious actors to figure out valid usernames from response times,
+    // allowing them to only focus on guessing passwords in brute-force attacks.
+    // As a preventive measure, you may want to hash passwords even for invalid usernames.
+    // However, valid usernames can be already be revealed with the signup page among other methods.
+    // It will also be much more resource intensive.
+    // Since protecting against this is non-trivial,
+    // it is crucial your implementation is protected against brute-force attacks with login throttling etc.
+    // If usernames are public, you may outright tell the user that the username is invalid.
+    if (!existingUser || existingUser.length > 0) return { error: 'Incorrect username or password' };
 
     const validPassword = bcrypt.compareSync(password, existingUser[0].hashed_password);
 
-    if (!validPassword) {
-        return {
-            error: 'Incorrect username or password',
-        };
-    }
+    if (!validPassword) return { error: 'Incorrect username or password' };
 
     const session = await lucia.createSession(existingUser[0].id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+
     return redirect('/');
 }
 
 export async function logout(): Promise<ActionResult> {
     const { session } = await validateRequest();
-    if (!session) {
-        return {
-            error: 'Unauthorized',
-        };
-    }
+    if (!session) return { error: 'Unauthorized' };
 
     await lucia.invalidateSession(session.id);
 
     const sessionCookie = lucia.createBlankSessionCookie();
     cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes);
+
     return redirect('/');
+}
+
+async function checkExistingUser(username: any, db: MySql2Database<Record<string, never>> | null) {
+    if (!db) return null;
+    const user = db
+        .select()
+        .from(users)
+        .where(eq(users.username, sql.placeholder(`username`)))
+        .prepare();
+
+    return await user.execute({ username: username });
+}
+
+function testUserName(username: FormDataEntryValue) {
+    return (
+        typeof username !== 'string' || username.length < 3 || username.length > 31 || !/^[a-z0-9_-]+$/.test(username)
+    );
+}
+function testPassword(password: FormDataEntryValue) {
+    return typeof password !== 'string' || password.length < 6 || password.length > 255;
 }
