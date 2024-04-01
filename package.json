@@ -8,11 +8,11 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "dk:gen": "pnpm drizzle-kit generate:mysql",
+        "dk:gen": "drizzle-kit generate:mysql",
         "dk:push": "drizzle-kit push:mysql",
         "dk:pull": "drizzle-kit introspect:mysql",
         "dk:stdio": "drizzle-kit studio --verbose",
-        "db:mig": "pnpm tsx src/db/migrate.ts"
+        "db:mig": "tsx src/db/migrate.ts"
     },
     "dependencies": {
         "@lucia-auth/adapter-drizzle": "^1.0.7",
