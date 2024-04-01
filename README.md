@@ -4,7 +4,7 @@ Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template prov
 
 ## Live Demo
 
-[Deployed on Vercel](nextjs-drizzle-mysql-tailwind.vercel.app)
+[Deployed on Vercel](https://nextjs-drizzle-mysql-tailwind.vercel.app)
 
 ## Database
 
