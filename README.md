@@ -98,7 +98,9 @@ bun db:mig
 
 ### Start Development Server:
 
-_*Note:*_ _`dev-t` (Nextjs Turbopack) not working at the time, it crashes while compiling any page. Webpack working fine._
+_Note:Just a heads up, dev-t (Next.js Turbopack) isn't playing nice with `next@14.1.4` at the moment. It tends to crash during page compilation. On the bright side, webpack seems to be chugging along just fine._
+
+_Update: Good news! This issue seems to be sorted out in `next@canary`. Phew! 🚀_
 
 If you're using npm:
 
