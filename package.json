@@ -17,30 +17,30 @@
     "dependencies": {
         "@lucia-auth/adapter-drizzle": "^1.0.7",
         "bcrypt": "^5.1.1",
-        "drizzle-orm": "^0.30.6",
+        "drizzle-orm": "^0.30.8",
         "lucia": "^3.1.1",
-        "mysql2": "^3.9.3",
-        "next": "14.1.4",
+        "mysql2": "^3.9.5",
+        "next": "14.2.2",
         "oslo": "^1.2.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@types/bcrypt": "^5.0.2",
-        "@types/node": "^20.12.2",
-        "@types/react": "^18.2.73",
-        "@types/react-dom": "^18.2.23",
+        "@types/node": "^20.12.7",
+        "@types/react": "^18.2.79",
+        "@types/react-dom": "^18.2.25",
+        "@typescript-eslint/eslint-plugin": "^7.7.0",
+        "@typescript-eslint/parser": "^7.7.0",
         "autoprefixer": "^10.4.19",
         "dotenv": "^16.4.5",
         "drizzle-kit": "^0.20.14",
         "eslint": "^8.57.0",
-        "eslint-config-next": "14.1.4",
+        "eslint-config-next": "14.2.2",
+        "eslint-plugin-drizzle": "^0.2.3",
         "postcss": "^8.4.38",
         "tailwindcss": "^3.4.3",
-        "typescript": "^5.4.3",
-        "eslint-plugin-drizzle": "^0.2.3",
-        "@typescript-eslint/eslint-plugin": "^7.4.0",
-        "@typescript-eslint/parser": "^7.4.0"
+        "typescript": "^5.4.5"
     },
     "license": "MIT"
 }
