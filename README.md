@@ -147,7 +147,7 @@ This template includes several scripts to aid development:
 
 `dk:stdio: Start Drizzle Kit Studio with verbose output.`
 
-`db:mig: Run database migrations.`
+`dK:mig: Run database migrations.`
 
 You can use these scripts according to your development workflow.
 

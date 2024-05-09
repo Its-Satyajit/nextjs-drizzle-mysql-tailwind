@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "aa2037b0-189e-4d42-a355-436ab0fca3bc",
+  "id": "67a78911-b1a3-4e6f-b7f4-3712eab56ebd",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "sessions": {
@@ -100,7 +100,6 @@
       }
     }
   },
-  "schemas": {},
   "_meta": {
     "schemas": {},
     "tables": {},

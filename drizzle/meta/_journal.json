@@ -1,12 +1,12 @@
 {
-  "version": "5",
+  "version": "6",
   "dialect": "mysql",
   "entries": [
     {
       "idx": 0,
       "version": "5",
-      "when": 1711794535641,
-      "tag": "0000_bizarre_toad_men",
+      "when": 1715281295537,
+      "tag": "0000_noisy_lorna_dane",
       "breakpoints": true
     }
   ]
