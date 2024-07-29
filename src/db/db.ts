@@ -1,37 +1,32 @@
-import { drizzle, MySql2Database } from 'drizzle-orm/mysql2';
+import { drizzle } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
 
 import env from '@/env';
 
-export const dbConfig = {
-    host: env.DB_HOST,
+import * as schema from './schema';
+
+/**
+ * Cache the database connection in development. This avoids creating a new connection on every HMR
+ * update.
+ */
+const globalForDb = globalThis as unknown as {
+    conn: mysql.Connection | undefined;
+};
+
+export const clientConfig = {
     user: env.DB_USER,
     password: env.DB_PASSWORD,
-    database: env.DB_DATABASE,
+    host: env.DB_HOST,
     port: Number(env.DB_PORT),
+    database: env.DB_DATABASE,
 };
 
-const pool = mysql.createPool({
-    ...dbConfig,
-    connectionLimit: 10,
-});
+const conn =
+    globalForDb.conn ??
+    (await mysql.createConnection({
+        ...clientConfig,
+        ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
+    }));
+if (env.NODE_ENV !== 'production') globalForDb.conn = conn;
 
-export const getDb = async (): Promise<MySql2Database<Record<string, never>> | null> => {
-    try {
-        const connection = await pool.getConnection();
-        const db = drizzle(connection);
-        return db;
-    } catch (error) {
-        console.error('Error while getting database:', error);
-        return null;
-    }
-};
-
-export const closeDb = async (): Promise<void> => {
-    try {
-        pool.end();
-        console.log('Database connection pool closed.');
-    } catch (error) {
-        console.error('Error while closing database connection pool:', error);
-    }
-};
+export const db = drizzle(conn, { schema, mode: 'default' });

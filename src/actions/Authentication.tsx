@@ -1,17 +1,15 @@
 'use server';
 import bcrypt from 'bcrypt';
-import { eq, sql } from 'drizzle-orm';
-import type { MySql2Database } from 'drizzle-orm/mysql2';
+import { eq } from 'drizzle-orm';
 import { generateId } from 'lucia';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { lucia } from '@/auth/auth';
 import { validateRequest } from '@/auth/validateRequest';
-import { getDb } from '@/db/db';
+import { db } from '@/db/db';
 import { users } from '@/db/schema/users';
 
-const db = await getDb();
 const saltRounds = 10;
 
 export async function server_signUp(formData: FormData) {
@@ -24,7 +22,7 @@ export async function server_signUp(formData: FormData) {
 
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
     // const hashedPassword = await new Argon2id().hash(password);
-    const existingUser = await checkExistingUser(username, db);
+    const existingUser = await checkExistingUser(username);
     if (existingUser && existingUser.length > 0) return { message: 'Username is already taken.' };
 
     const userId = generateId(15);
@@ -46,7 +44,7 @@ export async function server_sigIn(formData: FormData) {
     if (testUserName(username)) return { message: 'Invalid username' };
     if (testPassword(password)) return { message: 'Invalid password' };
 
-    const existingUser = await checkExistingUser(username, db);
+    const existingUser = await checkExistingUser(username);
 
     // NOTE:
     // Returning immediately allows malicious actors to figure out valid usernames from response times,
@@ -84,15 +82,8 @@ export async function server_logOut() {
     return redirect('/');
 }
 
-async function checkExistingUser(username: any, db: MySql2Database<Record<string, never>> | null) {
-    if (!db) return null;
-    const user = db
-        .select()
-        .from(users)
-        .where(eq(users.username, sql.placeholder(`username`)))
-        .prepare();
-
-    return await user.execute({ username: username });
+async function checkExistingUser(username: string) {
+    return await db.select().from(users).where(eq(users.username, username)).execute();
 }
 
 function testUserName(username: FormDataEntryValue) {

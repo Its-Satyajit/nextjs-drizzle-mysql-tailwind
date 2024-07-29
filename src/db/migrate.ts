@@ -1,22 +1,28 @@
-import 'dotenv/config';
-
+import { drizzle } from 'drizzle-orm/mysql2';
 import { migrate } from 'drizzle-orm/mysql2/migrator';
+import mysql from 'mysql2/promise';
 
-import { closeDb, getDb } from './db';
+import env from '@/env';
+import { clientConfig } from './db';
 
-async function migrateAndCloseConnection(): Promise<void> {
-    let db;
+const connection = await mysql.createConnection({
+    ...clientConfig,
+    ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
+});
+
+const db = drizzle(connection, { mode: 'default' });
+
+const migrateDB = async () => {
     try {
-        db = await getDb();
-        if (db) {
-            await migrate(db, { migrationsFolder: './drizzle' });
-            console.log('Migration completed successfully.');
-        }
-    } catch (error) {
-        console.error('Error during migration:', error);
+        console.log('Migration Started');
+        await migrate(db, { migrationsFolder: 'drizzle' });
+        console.log('Migration Completed');
+    } catch (err) {
+        console.log(err);
     } finally {
-        await closeDb();
+        console.log('Connection Closed');
+        await connection.end();
     }
-}
+};
 
-migrateAndCloseConnection();
+await migrateDB();
