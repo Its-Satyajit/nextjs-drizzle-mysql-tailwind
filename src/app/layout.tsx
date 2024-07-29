@@ -21,7 +21,7 @@ export default function RootLayout({
     return (
         <html lang='en'>
             <body className={`${inter.className} bg-slate-50`}>
-                <Providers>
+                <Providers isDev={process.env.NODE_ENV !== 'production'}>
                     <Header />
                     <main className='container mx-auto'> {children}</main>
                 </Providers>
