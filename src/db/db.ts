@@ -21,12 +21,15 @@ export const clientConfig = {
     database: env.DB_DATABASE,
 };
 
-const conn =
-    globalForDb.conn ??
-    (await mysql.createConnection({
-        ...clientConfig,
-        ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
-    }));
-if (env.NODE_ENV !== 'production') globalForDb.conn = conn;
+async function getDatabaseConnection() {
+    const conn =
+        globalForDb.conn ??
+        (await mysql.createConnection({
+            ...clientConfig,
+            ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
+        }));
+    if (env.NODE_ENV !== 'production') globalForDb.conn = conn;
+    return conn;
+}
 
-export const db = drizzle(conn, { schema, mode: 'default' });
+export const dbPromise = getDatabaseConnection().then((conn) => drizzle(conn, { schema, mode: 'default' }));
