@@ -1,17 +1,16 @@
 'use client';
-import { useFormState } from 'react-dom';
 import Link from 'next/link';
 
-import { signin } from '@/actions/Authentication';
-import FormErrorMessage from './FormErrorMessage';
+import { server_sigIn } from '@/actions/Authentication';
+import { useMutation } from '@tanstack/react-query';
 
-export default function SigninForm() {
-    const initialState = {
-        message: '',
-    };
-    const [fromState, fromAction] = useFormState(signin, initialState);
+export default function SignInForm() {
+    const { mutate, data, isPending } = useMutation({
+        mutationFn: server_sigIn,
+    });
+
     return (
-        <form className=' grid grid-flow-row space-y-5 text-xl' action={fromAction}>
+        <form className=' grid grid-flow-row space-y-5 text-xl' action={async (formData) => await mutate(formData)}>
             <h1 className='text-3xl font-semibold'>Sign In</h1>
             <label htmlFor='username'>
                 Username:
@@ -36,10 +35,16 @@ export default function SigninForm() {
                     Don&apos;t have an account?
                 </Link>
             </div>
-            <button className='bg-indigo-600 text-indigo-50 font-semibold px-4 py-2 rounded-md hover:bg-indigo-500 transition-all'>
-                Continue
+            <button
+                disabled={isPending}
+                className='bg-indigo-600 text-indigo-50 font-semibold px-4 py-2 rounded-md hover:bg-indigo-500 transition-all'
+            >
+                {isPending ? 'Loading...' : 'Continue'}
             </button>
-            <FormErrorMessage message={fromState?.message || ''} />
+
+            {data?.message && (
+                <p className='text-base text-red-800 bg-red-200 rounded text-center px-3 py-1.5'>{data?.message}</p>
+            )}
         </form>
     );
 }

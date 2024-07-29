@@ -1,5 +1,5 @@
-import { logout } from '@/actions/Authentication';
-import React from 'react';
+'use client';
+import { server_logOut } from '@/actions/Authentication';
 
 type LogoutButtonProps = {
     className?: string;
@@ -7,12 +7,11 @@ type LogoutButtonProps = {
 
 export default function LogoutButton({ className = '' }: LogoutButtonProps) {
     return (
-        <form action={logout}>
-            <button
-                className={`${className} text-center items-center px-2 rounded-xl py-1 bg-indigo-50 text-indigo-600`}
-            >
-                Sign out
-            </button>
-        </form>
+        <button
+            className={`${className} text-center items-center px-2 rounded-xl py-1 bg-indigo-50 text-indigo-600`}
+            onClick={() => server_logOut()}
+        >
+            Sign out
+        </button>
     );
 }

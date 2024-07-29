@@ -1,22 +1,20 @@
 'use server';
-import { redirect } from 'next/navigation';
-import { cookies } from 'next/headers';
-import { eq, sql } from 'drizzle-orm';
-import { generateId } from 'lucia';
-import type { MySql2Database } from 'drizzle-orm/mysql2';
 import bcrypt from 'bcrypt';
+import { eq, sql } from 'drizzle-orm';
+import type { MySql2Database } from 'drizzle-orm/mysql2';
+import { generateId } from 'lucia';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 import { lucia } from '@/auth/auth';
+import { validateRequest } from '@/auth/validateRequest';
 import { getDb } from '@/db/db';
 import { users } from '@/db/schema/users';
-import { validateRequest } from '@/auth/validateRequest';
-
-type ActionResult = { message?: string };
 
 const db = await getDb();
 const saltRounds = 10;
 
-export async function signup(currentState: ActionResult, formData: FormData): Promise<ActionResult> {
+export async function server_signUp(formData: FormData) {
     const username = formData.get('username') as string;
     const password = formData.get('password') as string;
 
@@ -40,7 +38,7 @@ export async function signup(currentState: ActionResult, formData: FormData): Pr
     return redirect(`/`);
 }
 
-export async function signin(currentState: ActionResult, formData: FormData): Promise<ActionResult> {
+export async function server_sigIn(formData: FormData) {
     const username = formData.get('username') as string;
     const password = formData.get('password') as string;
 
@@ -74,7 +72,7 @@ export async function signin(currentState: ActionResult, formData: FormData): Pr
     return redirect('/');
 }
 
-export async function logout(): Promise<ActionResult> {
+export async function server_logOut() {
     const { session } = await validateRequest();
     if (!session) return { message: 'Unauthorized' };
 
