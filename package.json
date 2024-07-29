@@ -11,12 +11,14 @@
         "lint": "next lint",
         "dk:gen": "drizzle-kit generate",
         "dk:push": "drizzle-kit push",
+        "dk:pull": "drizzle-kit introspect:mysql",
         "dk:stdio": "drizzle-kit studio --verbose",
         "dk:mig": "drizzle-kit migrate",
-        "dk:pull": "drizzle-kit introspect"
+        "dk:introspect": "drizzle-kit introspect"
     },
     "dependencies": {
         "@lucia-auth/adapter-drizzle": "^1.0.7",
+        "@tanstack/react-query": "^5.51.15",
         "bcrypt": "^5.1.1",
         "drizzle-orm": "^0.32.1",
         "lucia": "^3.2.0",
@@ -25,9 +27,11 @@
         "oslo": "^1.2.1",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "zod": "^3.23.8"
+        "zod": "^3.23.8",
+        "zustand": "^4.5.4"
     },
     "devDependencies": {
+        "@tanstack/react-query-devtools": "^5.51.15",
         "@types/bcrypt": "^5.0.2",
         "@types/node": "^20.14.13",
         "@types/react": "^18.3.3",
