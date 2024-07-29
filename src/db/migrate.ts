@@ -2,12 +2,11 @@ import { drizzle } from 'drizzle-orm/mysql2';
 import { migrate } from 'drizzle-orm/mysql2/migrator';
 import mysql from 'mysql2/promise';
 
-import env from '@/env';
 import { clientConfig } from './db';
 
 const connection = await mysql.createConnection({
     ...clientConfig,
-    ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
+    // ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
 });
 
 const db = drizzle(connection, { mode: 'default' });

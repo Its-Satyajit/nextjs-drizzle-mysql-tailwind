@@ -26,7 +26,7 @@ async function getDatabaseConnection() {
         globalForDb.conn ??
         (await mysql.createConnection({
             ...clientConfig,
-            ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
+            // ssl: env.NODE_ENV === 'production' ? { rejectUnauthorized: true } : undefined,
         }));
     if (env.NODE_ENV !== 'production') globalForDb.conn = conn;
     return conn;
