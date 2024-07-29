@@ -1,6 +1,6 @@
 # Next.js Drizzle MySQL Tailwind Lucia Template
 
-Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template provides you with a solid foundation to start building web applications using Next.js, Drizzle ORM, MySQL, Tailwind CSS, and Lucia. Below, you'll find detailed instructions on installation, usage, project structure, dependencies, and license information.
+Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template provides you with a solid foundation to start building web applications using Next.js, Drizzle ORM, MySQL, Tailwind CSS, @tanstack/react-query, and Lucia . Below, you'll find detailed instructions on installation, usage, project structure, dependencies, and license information.
 
 ## Live Demo
 
