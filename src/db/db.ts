@@ -1,12 +1,14 @@
 import { drizzle, MySql2Database } from 'drizzle-orm/mysql2';
 import mysql from 'mysql2/promise';
 
+import env from '@/env';
+
 export const dbConfig = {
-    host: process.env.DB_HOST as string,
-    user: process.env.DB_USER as string,
-    password: process.env.DB_PASSWORD as string,
-    database: process.env.DB_NAME as string,
-    port: Number(process.env.DB_PORT) as number,
+    host: env.DB_HOST,
+    user: env.DB_USER,
+    password: env.DB_PASSWORD,
+    database: env.DB_DATABASE,
+    port: Number(env.DB_PORT),
 };
 
 const pool = mysql.createPool({
