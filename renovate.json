@@ -1,0 +1,21 @@
+{
+    "extends": ["config:base"],
+    "packageRules": [
+        {
+            "matchDepTypes": ["dependencies", "devDependencies"],
+            "matchUpdateTypes": ["major"],
+            "enabled": false
+        },
+        {
+            "matchDepTypes": ["dependencies"],
+            "automerge": true,
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "matchDepTypes": ["devDependencies"],
+            "automerge": true,
+            "matchUpdateTypes": ["minor", "patch"]
+        }
+    ],
+    "schedule": ["before 2am on monday"]
+}
