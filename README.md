@@ -8,7 +8,7 @@ Experience the live demo of this template deployed on Vercel: [Next.js Drizzle M
 
 ## Database Hosting
 
-For the database, this template uses [Aiven](https://aiven.io/), which provides fully managed cloud database services.
+For the database, this template uses [MySQL](https://www.mysql.com/) you can configure any database you want, Refer [Drizzle Documentation](https://orm.drizzle.team/docs/overview)
 
 ## Installation
 
