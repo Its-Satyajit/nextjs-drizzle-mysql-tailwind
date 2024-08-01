@@ -1,184 +1,176 @@
-# Next.js Drizzle MySQL Tailwind Lucia Template
+# Next.js Drizzle MySQL Tailwind CSS Template
 
-Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template offers a comprehensive starting point for building web applications using cutting-edge technologies like Next.js, Drizzle ORM, MySQL, Tailwind CSS, @tanstack/react-query, and Lucia. Below, you'll find all the necessary details to set up, use, and explore the project.
+Welcome to the **Next.js Drizzle MySQL Tailwind CSS Template**! This template is your go-to starting point for building modern, scalable web applications using **Next.js**, **Drizzle ORM**, **MySQL**, **Tailwind CSS**, **@tanstack/react-query**, and **Lucia Authentication**. Explore how to set up, use, and customize this template for your next project.
 
 ## Live Demo
 
-Experience the live demo of this template deployed on Vercel: [Next.js Drizzle MySQL Tailwind Demo](https://nextjs-drizzle-mysql-tailwind.vercel.app).
+See the template in action: [Next.js Drizzle MySQL Tailwind Live Demo](https://nextjs-drizzle-mysql-tailwind.vercel.app).
 
-## Database Hosting
+## Why Choose This Template?
 
-For the database, this template uses [MySQL](https://www.mysql.com/) you can configure any database you want, Refer [Drizzle Documentation](https://orm.drizzle.team/docs/overview)
+This template is designed to save you time by providing a fully integrated stack with:
 
-## Installation
+-   **Next.js** for server-rendered React applications.
+-   **Drizzle ORM** for efficient and type-safe database interactions.
+-   **MySQL** for reliable database management.
+-   **Tailwind CSS** for responsive and customizable UI components.
+-   **Lucia** for secure and simple authentication.
 
-Get up and running quickly by following these steps:
+## Quick Start Guide
 
-### 1. Clone the Repository:
+### 1. Clone the Repository
 
-Start by cloning the repository to your local machine:
+Get started by cloning the repository to your local machine:
 
 ```bash
 git clone https://github.com/Its-Satyajit/nextjs-drizzle-mysql-tailwind.git
 ```
 
-### 2. Navigate to the Project Directory:
+### 2. Navigate to the Project Directory
 
-Move into the project directory:
+Change to the project directory:
 
 ```bash
 cd nextjs-drizzle-mysql-tailwind
 ```
 
-### 3. Install Dependencies:
+### 3. Install Dependencies
 
-Next, install the necessary dependencies. Choose your preferred package manager:
+Install the necessary dependencies using your preferred package manager:
 
--   Using npm:
+-   **npm**:
     ```bash
     npm install
     ```
--   Using pnpm:
+-   **pnpm**:
     ```bash
     pnpm install
     ```
--   Using yarn:
+-   **yarn**:
     ```bash
     yarn install
     ```
--   Using bun:
+-   **bun**:
     ```bash
     bun install
     ```
 
-### 4. Set Up the Database:
+### 4. Set Up the Database
 
-Configure your database by adding credentials to the `.env` file. After that, generate and migrate your database schema:
+Configure your MySQL database credentials in the `.env` file. Then, generate and migrate the database schema:
 
--   Using npm:
+-   **npm**:
     ```bash
     npm run dk:gen
     npm run dk:mig
     ```
--   Using pnpm:
+-   **pnpm**:
     ```bash
     pnpm run dk:gen
     pnpm run dk:mig
     ```
--   Using yarn:
+-   **yarn**:
     ```bash
     yarn run dk:gen
     yarn run dk:mig
     ```
--   Using bun:
+-   **bun**:
     ```bash
     bun run dk:gen
     bun run dk:mig
     ```
 
-### 5. Start the Development Server:
+### 5. Start the Development Server
 
-Once everything is set up, start the development server with the following command:
+Launch the development server:
 
--   Using npm:
+-   **npm**:
     ```bash
     npm run dev
     ```
--   Using pnpm:
+-   **pnpm**:
     ```bash
     pnpm run dev
     ```
--   Using yarn:
+-   **yarn**:
     ```bash
     yarn run dev
     ```
--   Using bun:
+-   **bun**:
     ```bash
     bun run dev
     ```
 
-_Note:_ If you're using Bun and encounter any issues, please refer to Bun's documentation as some commands may differ.
-
-## Usage
-
-This template includes a set of scripts to streamline your development process:
-
--   `dev-t`: Start the development server with the Next.js Turbopack bundler.
--   `dev`: Start the development server.
--   `build`: Build the application for production.
--   `start`: Start the application in production mode.
--   `lint`: Run ESLint for code linting.
--   `dk:gen`: Generate Drizzle ORM files for MySQL.
--   `dk:push`: Push changes to the MySQL database using Drizzle ORM.
--   `dk:pull`: Introspect the MySQL database using Drizzle ORM.
--   `dk:stdio`: Launch Drizzle Kit Studio with verbose output.
--   `dk:mig`: Run database migrations.
--   `dk:introspect`: Introspect the database schema.
-
-These scripts are designed to cover essential tasks during development and deployment.
-
 ## Project Structure
 
-The project's structure is thoughtfully organized to support efficient development:
+This template is organized to support efficient development and easy scalability. Here's an overview of the project structure:
 
-<pre>
+```plaintext
 root
-├───drizzle
-│   └───meta
-├───node_modules
-├───public
-└───src
-    ├───actions
-    ├───app
-    │   └───(auth)
-    │       ├───signin
-    │       └───signup
-    ├───auth
-    ├───components
-    │   └───forms
-    └───db
-        └───schema
-</pre>
+├── drizzle
+│   └── meta
+├── node_modules
+├── public
+└── src
+    ├── actions
+    ├── app
+    │   └── (auth)
+    │       ├── signin
+    │       └── signup
+    ├── auth
+    ├── components
+    │   └── forms
+    └── db
+        └── schema
+```
 
-Feel free to adapt the project structure to meet the specific needs of your application.
+## Key Features and Technologies
 
-## Dependencies
+This template leverages the following technologies:
 
-This template leverages a robust set of dependencies to deliver high performance and scalability:
+### Core Dependencies
 
--   **@lucia-auth/adapter-drizzle**: Integration of Lucia authentication with Drizzle ORM.
--   **bcrypt**: Secure password hashing library.
--   **drizzle-orm**: A powerful ORM for MySQL.
--   **lucia**: A lightweight JavaScript authentication library.
+-   **@lucia-auth/adapter-drizzle**: Integrates Lucia authentication with Drizzle ORM.
+-   **@tanstack/react-query**: Powerful data-fetching library for React.
+-   **bcrypt**: Provides secure password hashing.
+-   **drizzle-orm**: A type-safe ORM for interacting with MySQL databases.
+-   **lucia**: Lightweight and secure authentication library.
 -   **mysql2**: MySQL client for Node.js.
--   **next**: The React framework for building server-rendered applications.
--   **oslo**: Utility library for Node.js.
+-   **next**: A framework for building server-side rendered React applications.
+-   **oslo**: A utility library for Node.js.
 -   **react**: A library for building user interfaces.
--   **react-dom**: DOM-specific methods for React.
+-   **react-dom**: The entry point for React to interact with the DOM.
 -   **zod**: A TypeScript-first schema declaration and validation library.
 -   **zustand**: A small, fast, and scalable state-management library.
 
-## Development Dependencies
+### Development Tools
 
-For a smooth development experience, the following tools and libraries are included:
-
--   **@tanstack/react-query-devtools**: Devtools for @tanstack/react-query.
--   **@types/bcrypt**: TypeScript definitions for bcrypt.
--   **@types/node**: TypeScript definitions for Node.js.
--   **@types/react**: TypeScript definitions for React.
--   **@types/react-dom**: TypeScript definitions for React DOM.
--   **@typescript-eslint/eslint-plugin**: TypeScript linting plugin for ESLint.
--   **@typescript-eslint/parser**: TypeScript parser for ESLint.
--   **autoprefixer**: PostCSS plugin to add vendor prefixes.
+-   **@tanstack/react-query-devtools**: Devtools for react-query.
+-   **@types**: TypeScript definitions for various libraries.
+-   **@typescript-eslint**: ESLint plugin and parser for TypeScript.
+-   **autoprefixer**: Adds vendor prefixes to CSS rules.
 -   **drizzle-kit**: CLI toolkit for Drizzle ORM.
--   **eslint**: Linter for JavaScript and TypeScript code.
--   **eslint-config-next**: ESLint configuration for Next.js projects.
--   **eslint-config-prettier**: Ensures Prettier and ESLint play nicely together.
--   **eslint-plugin-drizzle**: ESLint plugin for Drizzle ORM.
--   **postcss**: Tool for transforming CSS with plugins.
--   **tailwindcss**: Utility-first CSS framework for custom designs.
--   **typescript**: A typed superset of JavaScript that compiles to plain JavaScript.
+-   **eslint**: Linter for maintaining code quality.
+-   **eslint-config-next**: ESLint configuration optimized for Next.js.
+-   **tailwindcss**: Utility-first CSS framework for creating responsive designs.
+-   **typescript**: A strongly-typed programming language that builds on JavaScript.
+
+## Scripts
+
+This template includes several scripts to facilitate development and deployment:
+
+-   `dev-t`: Start the development server with the Turbopack bundler.
+-   `dev`: Start the standard development server.
+-   `build`: Build the application for production.
+-   `start`: Start the production server.
+-   `lint`: Run ESLint to check for code issues.
+-   `dk:gen`: Generate Drizzle ORM files.
+-   `dk:push`: Apply changes to the MySQL database.
+-   `dk:pull`: Introspect the MySQL database.
+-   `dk:stdio`: Open Drizzle Kit Studio.
+-   `dk:mig`: Run database migrations.
+-   `dk:introspect`: Introspect and generate database schema.
 
 ## License
 
-This project is licensed under the MIT License. For more details, please refer to the [LICENSE](https://github.com/Its-Satyajit/nextjs-drizzle-mysql-tailwind/blob/main/LICENSE) file.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Its-Satyajit/nextjs-drizzle-mysql-tailwind/blob/main/LICENSE) file for more details.
