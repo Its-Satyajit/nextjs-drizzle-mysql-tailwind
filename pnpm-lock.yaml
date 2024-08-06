@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.0.7
-        version: 1.0.7(lucia@3.2.0)
+        version: 1.1.0(drizzle-orm@0.32.1(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1))(lucia@3.2.0)
       '@tanstack/react-query':
         specifier: ^5.51.15
         version: 5.51.16(react@18.3.1)
@@ -438,9 +438,10 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@lucia-auth/adapter-drizzle@1.0.7':
-    resolution: {integrity: sha512-X/V7fLBca8EC/gPXCntwbQpb0+F9oEuRoHElvsi9rCrdnGhCMNxHgwAvgiQ6pes+rIYpyvx4n3hvjqo/fPo03A==}
+  '@lucia-auth/adapter-drizzle@1.1.0':
+    resolution: {integrity: sha512-iCTnZWvfI5lLZOdUHZYiXA1jaspIFEeo2extLxQ3DjP3uOVys7IPwBi7zezLIRu9dhro4H4Kji+7gSYyjcef2A==}
     peerDependencies:
+      drizzle-orm: '>= 0.29 <1'
       lucia: 3.x
 
   '@mapbox/node-pre-gyp@1.0.11':
@@ -2723,8 +2724,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@lucia-auth/adapter-drizzle@1.0.7(lucia@3.2.0)':
+  '@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.32.1(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1))(lucia@3.2.0)':
     dependencies:
+      drizzle-orm: 0.32.1(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1)
       lucia: 3.2.0
 
   '@mapbox/node-pre-gyp@1.0.11':
