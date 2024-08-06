@@ -17,6 +17,5 @@
             "matchUpdateTypes": ["minor", "patch"]
         }
     ],
-    "schedule": ["before 2am on monday"],
     "dependencyDashboard": false
 }
