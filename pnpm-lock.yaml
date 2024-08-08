@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.0.7
-        version: 1.1.0(drizzle-orm@0.32.2(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1))(lucia@3.2.0)
+        version: 1.1.0(drizzle-orm@0.33.0(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1))(lucia@3.2.0)
       '@tanstack/react-query':
         specifier: ^5.51.15
         version: 5.51.23(react@18.3.1)
@@ -18,8 +18,8 @@ importers:
         specifier: ^5.1.1
         version: 5.1.1
       drizzle-orm:
-        specifier: ^0.32.1
-        version: 0.32.2(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1)
+        specifier: ^0.33.0
+        version: 0.33.0(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1)
       lucia:
         specifier: ^3.2.0
         version: 3.2.0
@@ -1137,8 +1137,8 @@ packages:
     resolution: {integrity: sha512-rUl5Rf5HLOVkAwHEVEi8xgulIRWzoys0q77RHGCxv5e9v8AI3JGFg7Ug5K1kn513RwNZbuNJMUKOXo0j8kPRgg==}
     hasBin: true
 
-  drizzle-orm@0.32.2:
-    resolution: {integrity: sha512-3fXKzPzrgZIcnWCSLiERKN5Opf9Iagrag75snfFlKeKSYB1nlgPBshzW3Zn6dQymkyiib+xc4nIz0t8U+Xdpuw==}
+  drizzle-orm@0.33.0:
+    resolution: {integrity: sha512-SHy72R2Rdkz0LEq0PSG/IdvnT3nGiWuRk+2tXZQ90GVq/XQhpCzu/EFT3V2rox+w8MlkBQxifF8pCStNYnERfA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
@@ -2728,9 +2728,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.32.2(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1))(lucia@3.2.0)':
+  '@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.33.0(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1))(lucia@3.2.0)':
     dependencies:
-      drizzle-orm: 0.32.2(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1)
+      drizzle-orm: 0.33.0(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1)
       lucia: 3.2.0
 
   '@mapbox/node-pre-gyp@1.0.11':
@@ -3434,7 +3434,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.32.2(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1):
+  drizzle-orm@0.33.0(@types/react@18.3.3)(mysql2@3.11.0)(react@18.3.1):
     optionalDependencies:
       '@types/react': 18.3.3
       mysql2: 3.11.0
