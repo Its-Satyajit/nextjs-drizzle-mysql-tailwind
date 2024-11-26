@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.0.7
-        version: 1.1.0(drizzle-orm@0.36.0(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1))(lucia@3.2.2)
+        version: 1.1.0(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1))(lucia@3.2.2)
       '@tanstack/react-query':
         specifier: ^5.51.15
         version: 5.59.19(react@18.3.1)
@@ -19,7 +19,7 @@ importers:
         version: 5.1.1
       drizzle-orm:
         specifier: ^0.36.0
-        version: 0.36.0(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1)
+        version: 0.36.4(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1)
       lucia:
         specifier: ^3.2.0
         version: 3.2.2
@@ -1138,15 +1138,15 @@ packages:
     resolution: {integrity: sha512-4BNA0T2blN+jW5wSwhtc+FIlCMuxYSMWCnYYdOBi5rttwq8aVXRUid0d0NCzcBKtZQSPZGAUxy+TXr7Q1OgEug==}
     hasBin: true
 
-  drizzle-orm@0.36.0:
-    resolution: {integrity: sha512-6BETYPdKSR7cDHC0ZfqZk2VrKJ8n/Rfd3ajFPsAbc69gi87nwZ6oBA2wUGMELHA0tQE4kUKN0Ds00LUZQ6Z69A==}
+  drizzle-orm@0.36.4:
+    resolution: {integrity: sha512-1OZY3PXD7BR00Gl61UUOFihslDldfH4NFRH2MbP54Yxi0G/PKn4HfO65JYZ7c16DeP3SpM3Aw+VXVG9j6CRSXA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
       '@electric-sql/pglite': '>=0.2.0'
       '@libsql/client': '>=0.10.0'
       '@libsql/client-wasm': '>=0.10.0'
-      '@neondatabase/serverless': '>=0.1'
+      '@neondatabase/serverless': '>=0.10.0'
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
@@ -1160,7 +1160,7 @@ packages:
       '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
-      expo-sqlite: '>=13.2.0'
+      expo-sqlite: '>=14.0.0'
       knex: '*'
       kysely: '*'
       mysql2: '>=2'
@@ -2745,9 +2745,9 @@ snapshots:
       js-base64: 3.7.7
     optional: true
 
-  '@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.36.0(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1))(lucia@3.2.2)':
+  '@lucia-auth/adapter-drizzle@1.1.0(drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1))(lucia@3.2.2)':
     dependencies:
-      drizzle-orm: 0.36.0(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1)
+      drizzle-orm: 0.36.4(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1)
       lucia: 3.2.2
 
   '@mapbox/node-pre-gyp@1.0.11':
@@ -3426,7 +3426,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.36.0(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1):
+  drizzle-orm@0.36.4(@libsql/client-wasm@0.14.0)(@types/react@18.3.12)(mysql2@3.11.3)(react@18.3.1):
     optionalDependencies:
       '@libsql/client-wasm': 0.14.0
       '@types/react': 18.3.12
