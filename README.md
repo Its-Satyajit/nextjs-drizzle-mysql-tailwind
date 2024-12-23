@@ -1,6 +1,6 @@
 
-[!CAUTION]
-The maintainer of the Lucia authentication library has announced plans to deprecate it early next year. Due to the library's limitations and complexity, particularly around database adapters, the maintainer has decided to shift focus to providing Lucia as an open-source resource for learning how to implement authentication and sessions from scratch. This new direction will include tutorials and examples for advanced features like 2FA, password reset, and rate limiting, while the Discord server will continue to offer general auth support. The current version of Lucia (v3) will be maintained for another six months (early 2025), with some adapters possibly deprecated sooner.
+> [!CAUTION]
+> The maintainer of the Lucia authentication library has announced plans to deprecate it early next year. Due to the library's limitations and complexity, particularly around database adapters, the maintainer has decided to shift focus to providing Lucia as an open-source resource for learning how to implement authentication and sessions from scratch. This new direction will include tutorials and examples for advanced features like 2FA, password reset, and rate limiting, while the Discord server will continue to offer general auth support. The current version of Lucia (v3) will be maintained for another six months (early 2025), with some adapters possibly deprecated sooner.
 
 
 # Next.js Drizzle MySQL Tailwind Lucia Template
