@@ -4,6 +4,9 @@
 [lucia-auth discussions #1707](https://github.com/lucia-auth/lucia/discussions/1707)
 
 
+
+> You can use my [New Template](https://github.com/Its-Satyajit/nextjs-template) using Better Auth
+
 # Next.js Drizzle MySQL Tailwind Lucia Template
 
 Welcome to the Next.js Drizzle MySQL Tailwind Lucia Template! This template offers a comprehensive starting point for building web applications using cutting-edge technologies like Next.js, Drizzle ORM, MySQL, Tailwind CSS, @tanstack/react-query, and Lucia.
